@@ -13,15 +13,17 @@ class Book extends React.Component {
   }
 
   render() {
+    let {book} = this.props
+
     return (
-      <li key={this.props.book.id}>
+      <li key={book.id}>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.smallThumbnail})` }}></div>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
 
             <form className="book-shelf-changer" >
               <select
-                id={this.props.book.id}
+                id={book.id}
                 value={this.state.shelf}
                 onChange={this.handleShelfChange}
                 >
@@ -34,8 +36,8 @@ class Book extends React.Component {
             </form>
 
           </div>
-          <div className="book-title">{this.props.book.title}</div>
-          <div className="book-authors">{this.props.book.authors}</div>
+          <div className="book-title">{book.title}</div>
+          <div className="book-authors">{book.authors ? book.authors.join(', '): ''}</div>
         </div>
       </li>
     )
