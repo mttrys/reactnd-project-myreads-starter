@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 class SearchBooks extends React.Component {
 
   render() {
+    let {queryBooks, booksQuaried, updateBookShelf} = this.props
+
     return (
        <div className="search-books">
           <div className="search-books-bar">
@@ -13,14 +15,14 @@ class SearchBooks extends React.Component {
               <input
                 type="text"
                 placeholder="Search by title or author"
-                onChange={this.props.queryBooks}
+                onChange={queryBooks}
               />
             </div>
           </div>
           <div className="search-books-results">
             <BooksGrid
-              books={this.props.booksQuaried} 
-              updateBookShelf={this.props.updateBookShelf}/>
+              books={booksQuaried} 
+              updateBookShelf={updateBookShelf}/>
           </div>
        </div>
     )
