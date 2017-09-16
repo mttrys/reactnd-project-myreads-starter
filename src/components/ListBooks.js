@@ -7,6 +7,12 @@ class ListBooks extends React.Component {
   render() {
     const {books} = this.props;
 
+    /*
+    const currentlyReading = books.filter((book) => { book.shelf === 'currentlyReading'});
+    
+    // ** warning  Expected to return a value in this function
+    */
+
     const currentlyReading = books.filter((book) => {
       return (book.shelf === 'currentlyReading')
     });
