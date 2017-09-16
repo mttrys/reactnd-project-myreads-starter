@@ -1,15 +1,22 @@
 import React from 'react';
 import * as BooksAPI from '../BooksAPI';
-
+import PropTypes from 'prop-types';
 
 class Book extends React.Component {
-
+  static propTypes = {
+    updateBookShelf: PropTypes.func,
+    book: PropTypes.object
+  }
+  
   state = { 
     shelf: 'none'
   }
   
   handleShelfChange = (e) => {
     this.props.updateBookShelf(this.props.book, e.target.value)
+    if (this.props.book.shelf !== e.target.value) { 
+      this.setState({shelf: e.target.value})
+    }
   }
 
   render() {
