@@ -44,7 +44,6 @@ class BooksApp extends React.Component {
           })
           this.setState({ booksQuaried: booksFound })
         }
-        
       })
     }
   }
@@ -77,14 +76,12 @@ class BooksApp extends React.Component {
     }) 
   }
 
-  // inconsistent rerendering of ListBooks without this method
+  // inconsistent rerendering of ListBooks without this lifecycle hook
   componentWillUpdate() { 
     BooksAPI.getAll().then((books) => { 
       this.setState({ books })
     })     
   }
-
-
 }
 
 export default BooksApp;

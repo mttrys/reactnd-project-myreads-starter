@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class ListBooks extends React.Component {
   
   render() {
-    const {books} = this.props;
+    const {books, updateBookShelf} = this.props;
 
     /*
     const currentlyReading = books.filter((book) => { book.shelf === 'currentlyReading'});
@@ -36,7 +36,7 @@ class ListBooks extends React.Component {
               <div className="bookshelf-books">
                 <BooksGrid 
                   books={currentlyReading} 
-                  updateBookShelf={this.props.updateBookShelf}/> 
+                  updateBookShelf={updateBookShelf}/> 
               </div>
             </div>
             <div className="bookshelf">
@@ -44,7 +44,7 @@ class ListBooks extends React.Component {
               <div className="bookshelf-books">
                 <BooksGrid 
                   books={wantToRead} 
-                  updateBookShelf={this.props.updateBookShelf}/> 
+                  updateBookShelf={updateBookShelf}/> 
               </div>
             </div>
             <div className="bookshelf">
@@ -52,7 +52,7 @@ class ListBooks extends React.Component {
               <div className="bookshelf-books">
                 <BooksGrid 
                   books={read} 
-                  updateBookShelf={this.props.updateBookShelf}/> 
+                  updateBookShelf={updateBookShelf}/> 
               </div>
             </div>
           </div>
@@ -63,8 +63,6 @@ class ListBooks extends React.Component {
       </div>
     )
   }
-
-
 }
 
-export default ListBooks
+export default ListBooks;

@@ -21,7 +21,6 @@ class BooksGrid extends React.Component {
       </ol>
     )
   }
-
 }
 
 export default BooksGrid;

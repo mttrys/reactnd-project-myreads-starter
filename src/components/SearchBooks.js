@@ -13,7 +13,7 @@ class SearchBooks extends React.Component {
 
 
   render() {
-    let {queryBooks, booksQuaried, updateBookShelf} = this.props
+    const {queryBooks, booksQuaried, updateBookShelf} = this.props
 
     return (
        <div className="search-books">

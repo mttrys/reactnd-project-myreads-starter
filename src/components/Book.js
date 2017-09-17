@@ -15,7 +15,7 @@ class Book extends React.Component {
   }
 
   render() {
-    let {book} = this.props
+    const {book} = this.props
 
     return (
       <li key={book.id}>
@@ -26,7 +26,7 @@ class Book extends React.Component {
             <form className="book-shelf-changer" >
               <select
                 id={book.id}
-                value={this.props.book.shelf || 'none'}
+                value={book.shelf || 'none'}
                 onChange={this.handleShelfChange}
                 >
                 <option value="none" disabled>Move to...</option>
@@ -39,7 +39,9 @@ class Book extends React.Component {
 
           </div>
           <div className="book-title">{book.title}</div>
-          <div className="book-authors">{book.authors ? book.authors.join(', '): ''}</div>
+          <div className="book-authors">
+            {book.authors ? book.authors.join(', '): ''}
+          </div>
         </div>
       </li>
     )
