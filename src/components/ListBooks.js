@@ -7,22 +7,12 @@ class ListBooks extends React.Component {
   render() {
     const {books, updateBookShelf} = this.props;
 
-    /*
-    const currentlyReading = books.filter((book) => { book.shelf === 'currentlyReading'});
-    
-    -> warning  Expected to return a value in this function
-    -> Note: It also won't render BooksGrid for currentlyReading, wantToRead and read. 
-    */
-
-    const currentlyReading = books.filter((book) => {
-      return (book.shelf === 'currentlyReading')
-    });
-    const wantToRead = books.filter((book) => {
-      return (book.shelf === 'wantToRead')
-    });
-    const read = books.filter((book) => {
-      return (book.shelf === 'read')
-    });
+    const wantToRead = books.filter(book => 
+      book.shelf === 'wantToRead')
+    const currentlyReading = books.filter(book => 
+      book.shelf === 'currentlyReading')
+    const read = books.filter(book => 
+      book.shelf === 'read')
 
     return (
       <div className="list-books">
