@@ -6,14 +6,14 @@ import PropTypes from 'prop-types';
 class SearchBooks extends React.Component {
   static propTypes = {
     queryBooks: PropTypes.func,
-    booksQuaried: PropTypes.array,
+    booksQueried: PropTypes.array,
     updateBookShelf: PropTypes.func, 
     clearSearchQuery: PropTypes.func
   }
 
 
   render() {
-    const {queryBooks, booksQuaried, updateBookShelf} = this.props
+    const {queryBooks, booksQueried, updateBookShelf} = this.props
 
     return (
        <div className="search-books">
@@ -29,7 +29,7 @@ class SearchBooks extends React.Component {
           </div>
           <div className="search-books-results">
             <BooksGrid
-              books={booksQuaried} 
+              books={booksQueried} 
               updateBookShelf={updateBookShelf}/>
           </div>
        </div>
