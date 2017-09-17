@@ -10,7 +10,8 @@ class ListBooks extends React.Component {
     /*
     const currentlyReading = books.filter((book) => { book.shelf === 'currentlyReading'});
     
-    // ** warning  Expected to return a value in this function
+    -> warning  Expected to return a value in this function
+    -> Note: It also won't render BooksGrid for currentlyReading, wantToRead and read. 
     */
 
     const currentlyReading = books.filter((book) => {
