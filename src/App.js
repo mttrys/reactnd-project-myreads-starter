@@ -17,17 +17,32 @@ class BooksApp extends React.Component {
   }
 
   updateBookShelf = (book, event) => {
-    BooksAPI.update(book, event)
+    if (book.shelf !== event) { 
+      BooksAPI.update(book, event)
+      BooksAPI.getAll().then((books) => { 
+        this.setState({ books })
+      }) 
+    }
   }
 
   queryBooks = (query) => {
-    if(query.target.value) {
+    if(query.target.value === '') {
+      this.setState({ booksQuaried: [] })
+    }
+    else if(query.target.value) {
       BooksAPI.search(query.target.value.trim(), 21)
-        .then(books => {
-        if(books.error === 'empty query') { 
+        .then(booksFound => {
+        if(booksFound.error === 'empty query') { 
           this.setState({ booksQuaried: [] })
         } else { 
-          this.setState({ booksQuaried: books })
+          this.state.books.forEach(savedBook => { 
+            booksFound.forEach((bookFound, index) => { 
+              if (bookFound.id === savedBook.id) { 
+                booksFound[index] = savedBook
+              }
+            })
+          })
+          this.setState({ booksQuaried: booksFound })
         }
         
       })
@@ -62,6 +77,7 @@ class BooksApp extends React.Component {
     }) 
   }
 
+  // inconsistent rerendering of ListBooks without this method
   componentWillUpdate() { 
     BooksAPI.getAll().then((books) => { 
       this.setState({ books })
