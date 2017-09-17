@@ -1,5 +1,4 @@
 import React from 'react';
-import * as BooksAPI from '../BooksAPI';
 import PropTypes from 'prop-types';
 
 class Book extends React.Component {
@@ -8,13 +7,9 @@ class Book extends React.Component {
     book: PropTypes.object
   }
   
-  state = { 
-    shelf: 'none'
-  }
-  
   handleShelfChange = (e) => {
-    this.props.updateBookShelf(this.props.book, e.target.value)
     if (this.props.book.shelf !== e.target.value) { 
+      this.props.updateBookShelf(this.props.book, e.target.value)
       this.setState({shelf: e.target.value})
     }
   }
@@ -31,7 +26,7 @@ class Book extends React.Component {
             <form className="book-shelf-changer" >
               <select
                 id={book.id}
-                value={this.state.shelf}
+                value={this.props.book.shelf || 'none'}
                 onChange={this.handleShelfChange}
                 >
                 <option value="none" disabled>Move to...</option>
@@ -49,11 +44,6 @@ class Book extends React.Component {
       </li>
     )
   }
-
-  componentDidMount() { 
-    BooksAPI.get(this.props.book.id).then(book => this.setState({book:book, shelf:book.shelf}))
-  }  
-
 }
 
 export default Book;
